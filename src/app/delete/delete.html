@@ -1,0 +1,26 @@
+<div class="container mt-4" *ngIf="isLoggedIn">
+  <h2>Termékek törlése</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Kijelölés</th>
+        <th>ID (rövid)</th>
+        <th>Név</th>
+        <th>Ár</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td><input type="checkbox" (change)="toggleSelection(p.id, $event)"></td>
+        <td>{{ p.id.substring(0, 5) }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price | currency:'HUF':'symbol':'1.0-0' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-danger" (click)="deleteSelected()">Kijelöltek törlése</button>
+</div>
+
+<div *ngIf="!isLoggedIn" class="alert alert-warning">
+  Kérlek, jelentkezz be az admin felületre!
+</div>

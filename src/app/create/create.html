@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div *ngIf="!isLoggedIn" class="card p-4">
+    <h3>Admin belépés</h3>
+    <div *ngIf="showError" class="alert alert-danger">Érvénytelen belépési adatok!</div>
+    <input [(ngModel)]="username" class="form-control mb-2" placeholder="Felhasználónév">
+    <input [(ngModel)]="password" type="password" class="form-control mb-2" placeholder="Jelszó">
+    <button (click)="login()" class="btn btn-primary">Belépés</button>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="card p-4">
+    <h3>Új termék adatai</h3>
+    <input [(ngModel)]="newProduct.name" class="form-control mb-2" placeholder="Név">
+    <input [(ngModel)]="newProduct.price" class="form-control mb-2" placeholder="Ft">
+    <input [(ngModel)]="newProduct.quantity" class="form-control mb-2" placeholder="db">
+    <button (click)="saveProduct()" class="btn btn-success">Új termék hozzáadása</button>
+  </div>
+</div>
